@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Large Media (Exclude trailers)
+public/GTAVI_Trailer_1.mp4
+public/GTAVI_Trailer_2.mp4
+# Optionally exclude all mp4s if they are not meant to be in repo
+# *.mp4
