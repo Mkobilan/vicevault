@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.vicevault.vercel.app"),
+  metadataBase: new URL("https://vicevault.vercel.app"),
   title: "Vice Vault | GTA 6 Leonida Interactive Map & Fan Hub",
   description: "The ultimate GTA 6 companion. Explore the interactive Leonida map, stay updated with the latest Vice City news, create custom memes, and join the most elite fan community.",
   keywords: ["GTA 6", "Grand Theft Auto VI", "Leonida", "Vice City", "GTA 6 Map", "GTA 6 News", "Vice Vault", "Leonida Map", "GTA VI interactive map", "Vice City fan community", "Leonida citizen stories"],

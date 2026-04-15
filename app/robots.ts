@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/settings/'],
     },
-    sitemap: 'https://www.vicevault.vercel.app/sitemap.xml',
+    sitemap: 'https://vicevault.vercel.app/sitemap.xml',
   }
 }
