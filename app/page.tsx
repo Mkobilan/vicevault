@@ -10,7 +10,7 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-black text-white selection:bg-primary/30">
       {/* Premium Hero Section */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/artwork_wallpapers/postcards/vice_city/vice_city_postcard_square.jpg')] bg-cover bg-center scale-105" />
+        <div className="absolute inset-0 bg-[url('/meme_gen/Leonida_Keys_05.webp')] bg-cover bg-center scale-105" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-black" />
         
         {/* Animated Neon Grid Background */}
