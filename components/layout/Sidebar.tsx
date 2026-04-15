@@ -8,7 +8,7 @@ import { createClient } from '@/lib/supabase/client'
 
 const navItems = [
   { name: 'The Vault', href: '/vault', icon: LayoutDashboard },
-  { name: 'Interactive Map', href: '/map', icon: Map },
+  { name: 'Interactive Map', href: 'https://map.stateofleonida.net', icon: Map, external: true, credit: { name: '@xlazefps', href: 'https://x.com/xlazefps' } },
   { name: 'The Wire', href: '/feed', icon: Radio },
   { name: 'Global Chat', href: '/chat', icon: MessageSquare },
   { name: 'Hype Tools', href: '/hype', icon: Sparkles },
@@ -43,6 +43,38 @@ export function Sidebar() {
       <nav className="flex-1 px-4 space-y-2 mt-4">
         {navItems.map((item) => {
           const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`)
+          const isExternal = 'external' in item && item.external
+          
+          const content = (
+            <>
+              <item.icon className={cn("w-5 h-5 transition-transform duration-300 group-hover:scale-110", isActive && "drop-shadow-[0_0_8px_rgba(255,0,255,0.6)]")} />
+              <div className="flex flex-col flex-1">
+                <span className="font-semibold tracking-wide">{item.name}</span>
+                {'credit' in item && item.credit && (
+                  <span className="text-[10px] text-muted-foreground/60 font-medium group-hover:text-primary/60 transition-colors">
+                    by {item.credit.name}
+                  </span>
+                )}
+              </div>
+            </>
+          )
+
+          if (isExternal) {
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 group text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                )}
+              >
+                {content}
+              </a>
+            )
+          }
+
           return (
             <Link
               key={item.href}
@@ -54,8 +86,7 @@ export function Sidebar() {
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               )}
             >
-              <item.icon className={cn("w-5 h-5 transition-transform duration-300 group-hover:scale-110", isActive && "drop-shadow-[0_0_8px_rgba(255,0,255,0.6)]")} />
-              <span className="font-semibold tracking-wide">{item.name}</span>
+              {content}
             </Link>
           )
         })}

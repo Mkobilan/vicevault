@@ -67,10 +67,11 @@ export default function DashboardPage() {
       <section className="px-6 -mt-10 relative z-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto w-full">
         <QuickNavCard 
           title="Interactive Map" 
-          description="Explore the world with community-sourced markers and insights."
-          href="/map"
+          description="Explore Leonida with community-sourced markers. Built by @xlazefps."
+          href="https://map.stateofleonida.net"
           icon={Map}
           color="text-secondary"
+          external
         />
         <QuickNavCard 
           title="The Wire" 
@@ -113,18 +114,30 @@ function CountdownItem({ label, value }: { label: string, value: number }) {
   )
 }
 
-function QuickNavCard({ title, description, href, icon: Icon, color }: any) {
+function QuickNavCard({ title, description, href, icon: Icon, color, external }: any) {
+  const content = (
+    <Card className="bg-black/80 border-primary/10 hover:border-primary/40 hover:bg-black transition-all duration-300 group overflow-hidden h-full">
+      <CardContent className="p-8">
+        <div className={cn("p-3 rounded-2xl bg-muted w-fit mb-6 group-hover:scale-110 transition-transform", color)}>
+          <Icon className="w-6 h-6" />
+        </div>
+        <h4 className="text-xl font-bold mb-2">{title}</h4>
+        <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+      </CardContent>
+    </Card>
+  )
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+        {content}
+      </a>
+    )
+  }
+
   return (
     <Link href={href}>
-      <Card className="bg-black/80 border-primary/10 hover:border-primary/40 hover:bg-black transition-all duration-300 group overflow-hidden">
-        <CardContent className="p-8">
-          <div className={cn("p-3 rounded-2xl bg-muted w-fit mb-6 group-hover:scale-110 transition-transform", color)}>
-            <Icon className="w-6 h-6" />
-          </div>
-          <h4 className="text-xl font-bold mb-2">{title}</h4>
-          <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
-        </CardContent>
-      </Card>
+      {content}
     </Link>
   )
 }
