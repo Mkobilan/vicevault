@@ -43,10 +43,28 @@ export function ProfileView({ user, targetUserId, onLogout }: ProfileViewProps) 
     votes: 0
   })
   const [loading, setLoading] = useState(true)
+  const [isIndexing, setIsIndexing] = useState(false)
 
   useEffect(() => {
     fetchData()
   }, [user])
+
+  const handleIndexNow = async () => {
+    setIsIndexing(true)
+    try {
+      const res = await fetch('/api/indexnow', { method: 'POST' })
+      if (res.ok) {
+        alert('URLs submitted to IndexNow successfully!')
+      } else {
+        alert('Failed to submit URLs to IndexNow.')
+      }
+    } catch (error) {
+      console.error('Error submitting to IndexNow:', error)
+      alert('Error submitting to IndexNow')
+    } finally {
+      setIsIndexing(false)
+    }
+  }
 
   const fetchData = async () => {
     setLoading(true)
@@ -137,6 +155,11 @@ export function ProfileView({ user, targetUserId, onLogout }: ProfileViewProps) 
                   <Button onClick={onLogout} variant="destructive" className="flex-1 md:flex-none h-12 rounded-xl bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 font-bold italic">
                     LOGOUT
                   </Button>
+                  {user?.email === 'matthew.kobilan@gmail.com' && (
+                    <Button onClick={handleIndexNow} disabled={isIndexing} variant="default" className="flex-1 md:flex-none h-12 rounded-xl bg-blue-500/10 text-blue-500 border border-blue-500/20 hover:bg-blue-500/20 font-bold italic">
+                      {isIndexing ? 'INDEXING...' : 'INDEX ALL'}
+                    </Button>
+                  )}
                 </>
               ) : (
                 <Button asChild variant="default" className="flex-1 md:flex-none h-12 rounded-xl font-black italic bg-primary text-white hover:bg-primary/80 transition-all">
