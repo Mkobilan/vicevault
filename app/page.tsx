@@ -1,9 +1,13 @@
-'use client'
-
+import type { Metadata } from "next";
 import { Map, Sparkles, LayoutDashboard, Shield, Zap, Globe, Users, ArrowRight, MessageSquare, Mail, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+
+export const metadata: Metadata = {
+  title: "Vice Vault | The Ultimate GTA 6 Companion & Fan Hub",
+  description: "Enter the next generation of Leonida. Track every GTA 6 update, explore the interactive Leonida map, and join the elite Vice City fan community in the Vice Vault.",
+};
 
 export default function LandingPage() {
   return (

@@ -46,5 +46,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/chat`,
+      lastModified: new Date(),
+      changeFrequency: 'always',
+      priority: 0.8,
+    },
   ]
 }
