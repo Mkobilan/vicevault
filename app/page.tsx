@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: "Vice Vault | The Ultimate GTA 6 Companion & Fan Hub",
+  title: "Home",
   description: "Enter the next generation of Leonida. Track every GTA 6 update, explore the interactive Leonida map, and join the elite Vice City fan community in the Vice Vault.",
 };
 

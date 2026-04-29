@@ -16,13 +16,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://vicevault.vercel.app"),
-  title: "Vice Vault | GTA 6 Leonida Interactive Map & Fan Hub",
+  title: {
+    default: "Vice Vault | GTA 6 Leonida Interactive Map & Fan Hub",
+    template: "%s | Vice Vault"
+  },
   description: "The ultimate GTA 6 companion. Explore the interactive Leonida map, stay updated with Vice City news, create custom memes, and join the elite fan community.",
   keywords: ["GTA 6", "Grand Theft Auto VI", "Leonida", "Vice City", "GTA 6 Map", "GTA 6 News", "Vice Vault", "Leonida Map", "GTA VI interactive map", "Vice City fan community", "Leonida citizen stories"],
   openGraph: {
-    title: "Vice Vault | GTA 6 Leonida Interactive Map & Fan Hub",
-    description: "The ultimate GTA 6 companion. Explore the interactive Leonida map, stay updated with the latest Vice City news, and join the elite fan community.",
-    url: "https://www.vicevault.vercel.app",
+    url: "https://vicevault.vercel.app",
     siteName: "Vice Vault",
     images: [
       {
@@ -37,8 +38,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vice Vault | GTA 6 Leonida Interactive Map & Fan Hub",
-    description: "The ultimate GTA 6 companion. Explore the interactive Leonida map, stay updated with the latest Vice City news, and join the elite fan community.",
     images: ["/icon.png"],
   },
   robots: {
@@ -69,6 +68,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
       style={{ colorScheme: 'dark' }}
     >
+      <head />
       <body className="min-h-full flex bg-background text-foreground">
         <AppShell>
           {children}
